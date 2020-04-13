@@ -1,11 +1,219 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>primera</title>
-</head>
-<body>
+<html lang="es">
+   <head>
+      <title>GreenCode | Inicio</title>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-</body>
+      <!-- Estilos Css -->
+      <link rel="stylesheet" href="style.css" />
+
+      <link
+         href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
+         rel="stylesheet"
+      />
+      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+      <script
+         src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+         type="text/javascript"
+         charset="utf-8"
+      ></script>
+      <script
+         src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+         type="text/javascript"
+         charset="utf-8"
+      ></script>
+   </head>
+
+   <body>
+      <!-- Ir Arriba -->
+      <div class="go-top">
+         <span class="fas fa-angle-up"></span>
+      </div>
+
+      <!-- Menu de Navegacion -->
+      <header id="header">
+         <nav class="menu">
+            <div class="logo-box">
+               <h1>
+                  <a href="#"><i class="fas fa-tree"></i> GreenCode</a>
+               </h1>
+            </div>
+
+            <div class="list-container">
+               <ul class="lists">
+                  <li><a href="#" class="active">Inicio</a></li>
+                  <li><a href="#">Nosotros</a></li>
+                  <li><a href="#">Servicios</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">Contacto</a></li>
+               </ul>
+            </div>
+         </nav>
+      </header>
+
+      <!-- Acerca de nosotros -->
+      <section class="acerca-de">
+         <div class="arriba"><h1 class="title">Smart City</h1></div>
+         <div class="content-inicio">
+            <img id="camion" src="images/camion.png" alt="truck" />
+            <img id="gps" src="images/gps.png" alt="truck" />
+            <img id="nacho" src="images/nacho.png" alt="truck" />
+         </div>
+         <button onclick="findMe()">Ubicación</button>
+         <div id="map"></div>
+
+         <div class="content-acerca">
+            <div>
+               <img id="planet" src="images/planeta.png" alt="planeta" />
+            </div>
+            <div class="info-container">
+               <h1 class="contenido">Acerca de Nosotros</h1>
+               <p class="contenido-1">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nullam molestie in risus eget iaculis. Pellentesque habitant
+                  morbi tristique senectus et netus et malesuada fames ac turpis
+                  egestas. Sed at ultricies lacus. Sed ut ornare mi, ac blandit
+                  nibh. Nulla sollicitudin lorem consequat, porta est ut,
+                  scelerisque risus. Morbi iaculis a sem quis iaculis. Sed
+                  facilisis turpis placerat, aliquam augue in, aliquet lectus.
+               </p>
+            </div>
+         </div>
+
+         <div class="bio">
+            <div>
+               <img id="city" src="images/city-2.png" alt="city" />
+            </div>
+            <div class="content-inst">
+               <h1 class="contenido">Institucional</h1>
+               <p class="contenido-2">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nullam molestie in risus eget iaculis. Pellentesque habitant
+                  morbi tristique senectus et netus et malesuada fames ac turpis
+                  egestas. Sed at ultricies lacus. Sed ut ornare mi, ac blandit
+                  nibh. Nulla sollicitudin lorem consequat, porta est ut,
+                  scelerisque risus. Morbi iaculis a sem quis iaculis. Sed
+                  facilisis turpis placerat, aliquam augue in, aliquet lectus.
+               </p>
+            </div>
+         </div>
+
+         <!--GPS-->
+
+         <div
+            style="width: 640px; height: 480px; position: relative;"
+            id="mapContainer"
+         ></div>
+         <script>
+            // Initialize the platform object:
+            var platform = new H.service.Platform({
+               apikey: "MZdOTeVRggOJuVHf5KJOtPjw-KtzQ8dkfelGi4K14CI",
+            });
+
+            // Obtain the default map types from the platform object
+            var maptypes = platform.createDefaultLayers();
+
+            // Instantiate (and display) a map object:
+            var map = new H.Map(
+               document.getElementById("mapContainer"),
+               maptypes.vector.normal.map,
+               {
+                  zoom: 10,
+                  center: { lat: -12.04, lng: -77.0 },
+               }
+            );
+
+            // Instantiate a circle object (using the default style):
+            var circle = new H.map.Circle({ lat: -12.04, lng: -77.0 }, 8000);
+
+            // Add the circle to the map:
+            map.addObject(circle);
+
+            var bubble = new H.ui.InfoBubble(
+               { lng: -12.04, lat: -77.0 },
+               {
+                  content: "<b>Hello World!</b>",
+               }
+            );
+
+            // Add info bubble to the UI:
+            ui.addBubble(bubble);
+         </script>
+      </section>
+
+      <aside></aside>
+
+      <footer>
+         <!--
+<div class="content-footer">
+            <div class="block">
+               <h1 class="Enlace-1">
+                  Columna1
+                  <ul class="lista-ul"><li><a href="#">Lorem, ipsum. </a></li></ul>
+               </h1>
+            </div>
+            <div class="block">
+               <h1 class="Enlace">
+                  Columna2
+                  <ul><li><a href="#">Lorem, ipsum. </a></li></ul>
+               </h1>
+            </div>
+            <div class="block">
+               <h1 class="Enlace">
+                  Columna3
+                  <ul><li><a href="#">Lorem, ipsum. </a></li></ul>
+                  
+               </h1>
+            </div>
+            <div class="block">
+               <h1 class="Enlace-4">
+                  Column4
+                  <ul><li><a href="#">Lorem, ipsum. </a></li></ul>
+               </h1>
+            </div>
+         </div>
+         -->
+
+         &copy;Derechos reservados 2020
+      </footer>
+
+      <script
+         src="https://kit.fontawesome.com/5f3b454903.js"
+         crossorigin="anonymous"
+      ></script>
+      <script>
+         function findMe() {
+            //verificar si soporta geolocalización
+            var ouput = document.getElementById("map");
+            if (navigator.geolocation) {
+               ouput.innerHTML = "<p>Tu navegador soporta Geolocalización</p>";
+            } else {
+               ouput.innerHTML = "<p>Tu navegador soporta Geolocalización</p>";
+            }
+            //Obtenemos latitud y longitud
+            function localizacion(posicion) {
+               var latitude = posicion.coords.latitude;
+               var longitude = posicion.coords.longitude;
+
+               var imgURL = (ouput.innerHTML =
+                  "<p>Latitud :" +
+                  latitude +
+                  "</br>longitud :" +
+                  longitude +
+                  "</p>");
+            }
+
+            function error() {
+               ouput.innerHTML = "<p>No se pudo obtener tu ubicación</p>";
+            }
+
+            navigator.geolocation.getCurrentPosition(localizacion, error);
+         }
+      </script>
+   </body>
 </html>
+
+//MZdOTeVRggOJuVHf5KJOtPjw-KtzQ8dkfelGi4K14CI
